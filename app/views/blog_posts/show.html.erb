@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<h1>Current Blog Posts</h1>
+<div>
+  <p>
+    <strong>Title:</strong> <%= @blog_post.title %>
+  </p>
+
+  <p>
+    <strong>Aurthor:</strong> <%= @blog_post.user.username %>
+  </p>
+
+  <p>
+    <strong>Blog entry:</strong> <%= @blog_post.blog_entry %>
+  </p>
+
+  <p>
+     <%= link_to 'Edit Post', edit_blog_post_path(@blog_post) %>
+  </p>
+</div>
+ 
+ <div>
+  <%= render 'comments/form' %>
+ </div> 
+<h2>Comments</h2>
+<% @blog_post.comments.each do |comment| %>
+ <%= comment.user.username%>
+ <%= comment.comment_entry %>
+
+<% end %>
+<div>
+<%= link_to 'Back', blog_posts_path %>
+</div>
